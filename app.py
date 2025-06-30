@@ -130,7 +130,7 @@ def add_prediction_overlay(frame, pred):
 
 def analyze_webcam(model):
     """Analyze live webcam feed"""
-    st.subheader("Live Webcam Analysis")
+    st.subheader("Live Webcam Analysis Can Only Be Tested Locally So Contact From GitHub")
     
     # Create layout
     col1, col2 = st.columns([1, 2])
@@ -202,7 +202,8 @@ def analyze_webcam(model):
                 # Display frame with overlay
                 display_frame = cv2.resize(frame, (400, 300))
                 display_frame = add_prediction_overlay(display_frame, pred)
-                webcam_placeholder.image(display_frame, channels="BGR", use_container_width=False)
+                webcam_placeholder.image(display_frame, channels="BGR")
+
                 
                 # Update status
                 status_area.text(f"Frames processed: {frame_count} | "
@@ -305,7 +306,8 @@ def analyze_video(video_path, model):
             # Display compact video with overlay
             display_frame = cv2.resize(frame, (400, 300))
             display_frame = add_prediction_overlay(display_frame, pred)
-            video_placeholder.image(display_frame, channels="BGR", use_container_width=False)
+            video_placeholder.image(display_frame, channels="BGR")
+
             
             # Update progress
             progress = frame_count / total_frames
