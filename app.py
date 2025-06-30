@@ -12,6 +12,19 @@ import requests
 from datetime import datetime
 import gdown
 
+import os
+import shutil
+
+# Ensure .streamlit folder exists
+os.makedirs(".streamlit", exist_ok=True)
+
+# Copy secret file from Render secret location to Streamlit expected location
+source_secret_path = "/etc/secrets/.secrets.toml"
+dest_secret_path = ".streamlit/secrets.toml"
+
+if os.path.exists(source_secret_path):
+    shutil.copy(source_secret_path, dest_secret_path)
+
 # Load secrets
 TWILIO_ACCOUNT_SID = st.secrets["TWILIO_ACCOUNT_SID"]
 TWILIO_AUTH_TOKEN = st.secrets["TWILIO_AUTH_TOKEN"]
